@@ -1,0 +1,92 @@
+*{
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+
+@import './phone.scss';
+
+button {
+  // reset button
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: rgb(255 167 167);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  
+  &:hover{
+    background: #ddd;
+  }
+
+  span{
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transition: all .3s ease-in-out; 
+
+    &:before {
+      content: '';
+      transform: translateY(-8px);
+      @extend span;
+    }
+    
+    &:after {
+      content: '';
+      transform: translateY(8px);
+      @extend span;
+    }
+  }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: #999;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -300px;
+  width: 70%;
+  transition: all 0.15s ease;
+  
+  &.open{
+    left: 0;
+    
+    //the secret hahahah...
+    &:before {
+      content: '';
+      position: fixed;
+      background: rgba(0,0,0,.4);
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+  }
+  
+  li {
+    a {
+      display: block;
+      text-decoration: none;
+      color: white;
+      padding: 1rem;
+      letter-spacing: 2px;
+      background: rgba(0,0,0,.0);
+      
+      &:hover{
+        background: rgba(0,0,0,.2);
+      }
+    }
+  }
+}
